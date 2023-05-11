@@ -1,0 +1,1 @@
+Visual Studio Code supports variable substitution in Debugging and Task configuration files as well as some select settings. Variable substitution is supported inside some key and value strings in launch.json and tasks.json files using ${variableName} syntax.
