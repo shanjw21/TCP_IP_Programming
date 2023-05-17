@@ -20,6 +20,7 @@
 #include <sys/types.h>
 #define _XOPEN_SOURCE 700
 
+// 信号处理函数，当发生sig信号时，调用这个函数。
 void timeout(int sig){
     if(sig == SIGALRM){
         puts("Time out!");
@@ -31,9 +32,9 @@ int main(){
 
     // sigaction 结构体
     struct sigaction act;
-    act.sa_handler = timeout;
-    sigemptyset(&act.sa_mask);
-    act.sa_flags = 0;
+    act.sa_handler = timeout; // 注册信号处理函数。
+    sigemptyset(&act.sa_mask); // sa_mask用来指定信号相关的选项。
+    act.sa_flags = 0; // 指定信号相关的特性。
 
     sigaction(SIGALRM,&act,0);
     alarm(2);
